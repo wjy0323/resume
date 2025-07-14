@@ -138,8 +138,13 @@ class PortfolioApp {
         
         // 创建下载链接
         const link = document.createElement('a');
-        link.href = 'assets/吴嘉茵-有产品经理经验-26届大三-立即到岗-可连续实习12个月-每周5-6天.pdf';
-        link.download = '吴嘉茵-简历-AI产品经理.pdf';
+        // 根据当前页面位置动态设置PDF路径
+        const currentPath = window.location.pathname;
+        const pdfPath = currentPath.includes('/assets/') 
+            ? '吴嘉茵-有产品经理经验-26届大三-立即到岗-可连续实习12个月-每周5-6天.pdf'
+            : 'assets/吴嘉茵-有产品经理经验-26届大三-立即到岗-可连续实习12个月-每周5-6天.pdf';
+        link.href = pdfPath;
+        link.download = '吴嘉茵-有产品经理经验-26届大三-立即到岗-可连续实习12个月-每周5-6天.pdf';
         link.style.display = 'none';
         
         // 添加到页面并触发下载
